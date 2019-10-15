@@ -1,0 +1,71 @@
+
+    <br>
+            {% csrf_token %}
+            <input id="busqueda" class="row col-7 mx-auto form-control type=" search " placeholder="Buscar Formulario " type="text" aria-label="Search">
+            <br>
+            <center>
+                <button id="btnguardar" type="button" class="row col-4 btn btn-dark ">Buscar</button>
+            </center>
+            <br>
+
+
+        <table class="table container " id="tabla-formularios">
+            <thead>
+                <tr>
+                    <th scope="col ">Id Formulario</th>
+                    <th scope="col ">Fecha de Emision</th>
+                    <th scope="col ">Sede</th>
+                    <th scope="col ">Encargado</th>
+                    <th scope="col ">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for formulario in formularios%}
+                <tr>
+                    <td>{{ formulario.id }}</td>
+                    <td>{{ formulario.fecha_informe }}</td>
+                    <td>{{ formulario.bibloteca}}</td>
+                    <td>{{ formulario.nombre_responsable }}</td>
+                    <td>
+                        <a href="/formulario/{{formulario.id}}">
+                            <i class="material-icons text-dark ">
+                            assignment
+                        </i>
+                        </a>
+                        <a href=" ">
+                            <i class="material-icons text-dark ">
+                            build
+                        </i>
+                        </a>
+                        <a href=" ">
+                            <i class="material-icons text-dark ">
+                            delete
+                        </i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#btnguardar').click(function(){
+                    $.ajax({
+                        type:"POST",
+                        url:"",
+                        data: {
+                            'texto_busqueda' : $('#busqueda').val(),
+                            'csrfmiddlewaretoken' : $('#input[name=csrfmiddlewaretoken]').val(),
+
+                        },
+                        success: searchSuccess,
+                        dataType: 'html'
+                    });
+                });
+            });
+
+            function searchSuccess(data, textStatus , jqXHR){
+                $('#tabla-formularios').html(data);
+            }
+        </script>        

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+body{
+
+padding:5%;
+}
+.col-md-5{
+border: 1px solid black;
+}
+.col-md-7{
+border: 1px solid black;
+}
+
+.col-md-2{
+border: 1px solid black;
+}
+
+.col-md-10{
+border: 1px solid black;
+}
+.col-md-6{
+border: 1px solid black;
+}
+.col-md-1{
+border: 1px solid black;
+}
+.col-md-3{
+border: 1px solid black;
+}
+
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Taller 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="container">
+
+
+	<!--           HEADER              -->
+	<div class="header" style="padding-bottom:3%;">
+		<div class="row">
+
+				<div class="col-md-5" style="font-weight: bold;">
+
+					<div class="row" style="border-bottom: 1px solid black">
+						<center>
+						<img src="https://www.ucsc.cl/wp-content/uploads/2015/01/logo_horizontal_color_sinfondo.png" style="width: 50%; padding-top:5%;">
+						</center>
+					</div>
+
+						<center>
+						     Direccion de Biblioteca
+						</center>
+
+				</div>
+
+
+				<div class="col-md-7" style="font-weight: bold;">
+					
+					<div class="row" style="border: 1px solid black">
+						
+						<div class="col-md-4" style="border-right: 1px solid black"><center>Version 1.0</center></div>
+
+						<div class="col-md-4" style="border-right: 1px solid black"><center>Estado:Vigente</center></div>
+
+						<div class="col-md-4"><center>Pagina 1 de 2</center></div>
+
+					</div>
+						
+					<div class="text" style="padding:5%;">
+
+						<center>
+								Formulario final de inventario
+						</center>	
+								
+					</div>
+								
+					
+
+					</div>
+
+				</div>
+
+		</div>	
+	</div>
+	<!--       FIN HEADER     -->
+	
+    <!--       CUERPO     -->
+    
+	<div class="datos">
+		<div class="row">
+				
+			<div class="col-md-2" style="font-weight: bold;">Nombre del responsable <p></div>
+			<div class="col-md-10"> {{ formulario.nombre_responsable }} </div>
+
+			<div class="col-md-2" style="font-weight: bold;">Biblioteca<p></div>
+			<div class="col-md-10"> {{ formulario.bibloteca}} </div>
+
+			<div class="col-md-2" style="font-weight: bold;">Fecha Inicio <p></div>
+			<div class="col-md-10"> {{ formulario.fecha_inicio }}  </div>
+
+			<div class="col-md-2" style="font-weight: bold;">Fecha Termino<p></div>
+			<div class="col-md-10"> {{ formulario.fecha_termino }} </div>
+
+			<div class="col-md-2" style="font-weight: bold;">Fecha Informe<p></div>
+			<div class="col-md-10"> {{ formulario.fecha_informe }} </div>
+		</div>
+
+    </div>
+    <!--       FIN CUERPO     -->
+
+    <!--     CONCEPTOS    -->
+    <hr>
+
+    <div class="conceptos">
+
+    	<div class="row">
+    		<div class="col-md-1" style="font-weight: bold;">N°</div>
+	    	<div class="col-md-7" style="font-weight: bold;"><center>CONCEPTOS</center></div>
+	    	<div class="col-md-1" style="font-weight: bold;">SSUE</div>
+	    	<div class="col-md-1" style="font-weight: bold;">LIBROS</div>
+	    	<div class="col-md-1" style="font-weight: bold;">CD</div>
+	    	<div class="col-md-1" style="font-weight: bold;">RESP</div>
+
+	    	<div class="col-md-1">1</div>
+	    	<div class="col-md-7">Total de items disponibles en el sistema</div>
+	    	<div class="col-md-1"></div>
+	    	<div class="col-md-1"></div>
+	    	<div class="col-md-1"></div>
+	    	<div class="col-md-1"></div>
+
+	    	<div class="col-md-1">2</div>
+	    	<div class="col-md-7">Total de items inventariados(capturados en block de notas y pistola de mando)</div>
+	    	<div class="col-md-1">{{ total_inventariados_ssue }}</div>
+	    	<div class="col-md-1">{{ total_inventariados_libros }}</div>
+	    	<div class="col-md-1">{{ total_inventariados_cd}}</div>
+			<div class="col-md-1">{{ total_inventariados_resp }}</div>
+			
+			{% for concepto in conceptos %}
+			<div class="col-md-1">{{ concepto.id }}</div>
+			<div class="col-md-7">{{ concepto.nombre_concepto }}</div>
+			<div class="col-md-1">{{ concepto.ssue }}</div>
+			<div class="col-md-1">{{ concepto.libros}}</div>
+			<div class="col-md-1">{{ concepto.cd }}</div>
+			<div class="col-md-1">{{ concepto.resp }}</div>
+			{% endfor %}
+			</div>
+
+    </div>
+	    <!--     FIN CONCEPTOS    -->
+
+	<div class="footer" style="padding-top:6%">
+
+		<div class="row">
+	
+			<div class="col-md-3"></div>
+			<div class="col-md-3" style="font-weight: bold;"><center>Elaboracion</center></div>
+			<div class="col-md-3" style="font-weight: bold;"><center>Revision</center></div>
+			<div class="col-md-3" style="font-weight: bold;"><center>Aprobacion</center></div>
+
+			<div class="col-md-3" style="font-weight: bold;"><center>Fecha</center></div>
+			<div class="col-md-3"><center>01-03-2016</center></div>
+			<div class="col-md-3"><center>04-03-2016</center></div>
+			<div class="col-md-3"><center>23-05-2016</center></div>
+
+			<div class="col-md-3" style="font-weight: bold;"><center>Cargo</center></div>
+			<div class="col-md-3" style="font-weight: bold;"><center>Jefe Unidad Servicios al Publico y Referencia</center></div>
+			<div class="col-md-3" style="font-weight: bold;"><center>Jefe Unidad Servicios al Publico y Referencia</center></div>
+			<div class="col-md-3" style="font-weight: bold;"><center>Director de biblioteca</center></div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
